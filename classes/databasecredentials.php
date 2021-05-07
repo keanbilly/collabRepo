@@ -5,13 +5,13 @@ class DataBaseConnect{
     private $username= "root";
     private $password ="";
     private $server ="localhost";
-    private $db ="collabdatabase";
+    private $db ="aports";
 
     public function DatabaseConnection(){
 
         $mysql = mysqli_connect($this->server, $this->username, $this->password, $this->db);
         if($mysql){
-            echo 'connected';
+           // echo 'connected';
             return $mysql;
         }
         else{
