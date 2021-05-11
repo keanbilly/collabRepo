@@ -1,10 +1,8 @@
 
 
 .myDiv{
-   border: 0.5px outset black !important;
+    border: 10px solid black !important;
     background-color: orange !important;
  
  
  }
-
- 
