@@ -1,12 +1,21 @@
 <?php
 include './header.php';
 
+include 'signup.php';
+ 
+/*$Fname = $_POST["Fname1"];
+$Lname = $_POST["Lname1"];
+$Email = $_POST["Email1"];
+$Bday = $_POST["Bday"];
+$Username = $_POST["Username1"];
+$Password = $_POST["Password1"];*/
+
 
 ?>
 <body>
 
 <?php
-$db = new LogIn;
+$db = new signup;
 ?>
 
 
@@ -60,20 +69,17 @@ $db = new LogIn;
 
 if(isset($_POST["signup"]))
 {
- 
-include 'signup.php';
- 
-$Fname = $_POST["Fname1"];
-$Lname = $_POST["Lname1"];
-$Email = $_POST["Email1"];
-$Bday = $_POST["Bday"];
-$Username = $_POST["Username1"];
-$Password = $_POST["Password1"];
+  
+    $db->Registration($_POST["Fname1"],$_POST["Lname1"],$_POST["Email1"],$_POST["Bday"],$_POST["Username1"],$_POST["Password1"]);
+
+echo "sign up successful!";
+  }
+     
 
 
 
 
-}
+
 
 
 ?>

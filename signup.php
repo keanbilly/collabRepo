@@ -10,6 +10,8 @@ class signup extends DataBaseConnect{
 
         $sql = "SELECT id FROM login_credentials WHERE username = '".$Username."'";
         $result = mysqli_query($db,$sql);
+
+        //echo "connected";
               
        
 
@@ -22,8 +24,17 @@ class signup extends DataBaseConnect{
            echo "invalid username";
 
         }else {
+
                 $sql1="INSERT INTO login_credentials (Fname, Lname, email, Birthday, username, password)
-                values ($Fname, $Lname, $Email, $Bday, $Username, md5($Password))";
+                values (".$Fname.", ".$Lname.", ".$Email.", ".$Bday.", ".$Username.", ".$Password.")";
+
+                mysqli_query($db, $sql1);
+
+               
+
+
+
+
 
                 
 echo " Added Successfully ";
