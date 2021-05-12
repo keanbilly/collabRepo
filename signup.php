@@ -7,41 +7,29 @@ class signup extends DataBaseConnect{
     public function Registration($Fname, $Lname, $Email, $Bday, $Username, $Password){
 
         $db = $this->DatabaseConnection();
+        $Password = md5($Password);
+        $checkDuplicates = 'SELECT * FROM login_credentials WHERE "username" ="'.$Username.'"';
+        $exec = $db->query($checkDuplicates);
+        if($exec){
+           
+           if(empty(mysqli_num_rows($exec))){
+            $insertQuery = 'INSERT INTO login_credentials(Fname, Lname, email, Birthday, username, password) VALUES("'.$Fname.'", "'.$Lname.'", "'.$Email.'", "'.$Bday.'", "'.$Username.'", "'.$Password.'")';
+            if($db->query($insertQuery)){
+                echo '<center><h1>Registration Success</h1></center>';
+            }
+            else{
+                echo $db->error;
+            }
 
-        $sql = "SELECT id FROM login_credentials WHERE username = '".$Username."'";
-        $result = mysqli_query($db,$sql);
+           }
 
-        //echo "connected";
-              
-       
+           else{
+            echo 'Duplicate Username';
+           }
+        }
 
-      $count = mysqli_num_rows($result);
-        
-        // If result matched $myusername and $mypassword, table row must be 1 row
-          
-        if($count == 1) {
-                     
-           echo "invalid username";
+        else{
 
-        }else {
-
-                $sql1="INSERT INTO login_credentials (Fname, Lname, email, Birthday, username, password)
-                values (".$Fname.", ".$Lname.", ".$Email.", ".$Bday.", ".$Username.", ".$Password.")";
-
-                mysqli_query($db, $sql1);
-
-               
-
-
-
-
-
-                
-echo " Added Successfully ";
-         
-
-
-        } 
-
+        }
     }
 }

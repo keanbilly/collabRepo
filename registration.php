@@ -24,63 +24,53 @@ $db = new signup;
 
 
   
-<form>
+<form method="post" action="">
 
 <div class="myDiv">
 
 <div class="mb-3">
     <label for="Fname1" class="form-label">First Name </label>
-    <input type="text" class="form-control" id="Fname1" required>
+    <input type="text" class="form-control" name="Fname1" required>
   </div>
 
  
   <div class="mb-3">
     <label for="Lname1" class="form-label">Last Name </label>
-    <input type="text" class="form-control" id="Lname1" required>
+    <input type="text" class="form-control" name="Lname1" required>
   </div>
 
 
   <div class="mb-3">
     <label for="Email1" class="form-label">Email address</label>
-    <input type="email" class="form-control" id="Email1" aria-describedby="emailHelp" required>
-   
+    <input type="email" class="form-control" name="Email1" required>
+   </div>
 
   <div class="mb-3">
     <label for="Bday" class="form-label">Birthday </label>
-    <input type="text" class="form-control" id="Bday" required>
+    <input type="date" class="form-control" name="Bday" required>
   </div>
 
   <div class="mb-3">
     <label for="Username1" class="form-label">User Name</label>
-    <input type="text" class="form-control" id="Username1" required>
+    <input type="text" class="form-control" name="Username1" required>
   </div>
 
   <div class="mb-3">
     <label for="Password1" class="form-label">Password</label>
-    <input type="password" class="form-control" id="Password1" required>
+    <input type="password" class="form-control" name="Password1" required>
   </div>
   
   <button type="submit" name="signup" class="btn btn-primary">Sign up</button>
-  </div>
-  </div>
-</form>
 
+
+</form>
+  </div>
 <?php
 
 if(isset($_POST["signup"]))
 {
-  
     $db->Registration($_POST["Fname1"],$_POST["Lname1"],$_POST["Email1"],$_POST["Bday"],$_POST["Username1"],$_POST["Password1"]);
-
-echo "sign up successful!";
   }
-     
-
-
-
-
-
-
 
 ?>
 
