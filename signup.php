@@ -10,10 +10,17 @@ class signup extends DataBaseConnect{
         $Password = md5($Password);
         $checkDuplicates = 'SELECT * FROM login_credentials WHERE "username" ="'.$Username.'"';
         $exec = $db->query($checkDuplicates);
+
+        $count = mysqli_num_rows($exec);
+        print_r $exec->field_count();
+        
+
         if($exec){
            
-           if(empty(mysqli_num_rows($exec))){
-            $insertQuery = 'INSERT INTO login_credentials(Fname, Lname, email, Birthday, username, password) VALUES("'.$Fname.'", "'.$Lname.'", "'.$Email.'", "'.$Bday.'", "'.$Username.'", "'.$Password.'")';
+           if($count == 0){
+            $insertQuery = 'INSERT INTO login_credentials(Fname, Lname, email, Birthday, username, password) 
+            VALUES("'.$Fname.'", "'.$Lname.'", "'.$Email.'", "'.$Bday.'", "'.$Username.'", "'.$Password.'")';
+
             if($db->query($insertQuery)){
                 echo '<center><h1>Registration Success</h1></center>';
             }
@@ -23,13 +30,18 @@ class signup extends DataBaseConnect{
 
            }
 
-           else{
-            echo 'Duplicate Username';
+           else if($count == 1) {                     
+          
+            echo '<div class="alert alert-warning">
+            <strong>Warning!</strong> duplicate username.
+            </div>';
+            
            }
         }
 
-        else{
+        else {
 
         }
+        
     }
 }
