@@ -1,6 +1,9 @@
 <?php
 include './header.php';
 include './classes/loginprocess.php';
+if(!empty($_SESSION['username'])){
+     header('Location: ./dashboard/dashboard.php');
+}
 ?>
 
 <body>

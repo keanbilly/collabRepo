@@ -1,4 +1,8 @@
 <?php
+session_start();
+if(!empty($_SESSION['username'])){
+  header('Location: ./dashboard/dashboard.php');
+}
 include './header.php';
 
 include 'signup.php';
