@@ -2,14 +2,6 @@
 include './header.php';
 
 include 'signup.php';
- 
-/*$Fname = $_POST["Fname1"];
-$Lname = $_POST["Lname1"];
-$Email = $_POST["Email1"];
-$Bday = $_POST["Bday"];
-$Username = $_POST["Username1"];
-$Password = $_POST["Password1"];*/
-
 
 ?>
 <body>

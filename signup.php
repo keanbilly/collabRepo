@@ -8,15 +8,11 @@ class signup extends DataBaseConnect{
 
         $db = $this->DatabaseConnection();
         $Password = md5($Password);
-        $checkDuplicates = 'SELECT * FROM login_credentials WHERE "username" ="'.$Username.'"';
+        $checkDuplicates = 'SELECT * FROM login_credentials WHERE username ="'.$Username.'"';
         $exec = $db->query($checkDuplicates);
 
         $count = mysqli_num_rows($exec);
-        print_r $exec->field_count();
-        
 
-        if($exec){
-           
            if($count == 0){
             $insertQuery = 'INSERT INTO login_credentials(Fname, Lname, email, Birthday, username, password) 
             VALUES("'.$Fname.'", "'.$Lname.'", "'.$Email.'", "'.$Bday.'", "'.$Username.'", "'.$Password.'")';
@@ -33,15 +29,11 @@ class signup extends DataBaseConnect{
            else if($count == 1) {                     
           
             echo '<div class="alert alert-warning">
-            <strong>Warning!</strong> duplicate username.
+            <strong>Warning!</strong> Duplicate Username.
             </div>';
             
            }
-        }
-
-        else {
-
-        }
+        
         
     }
 }

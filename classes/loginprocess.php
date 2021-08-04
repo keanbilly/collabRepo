@@ -1,4 +1,5 @@
 <?php
+session_start();
 include './classes/databasecredentials.php';
 
 class LogIn extends DataBaseConnect{
@@ -6,24 +7,26 @@ class LogIn extends DataBaseConnect{
     public function LoginProcess($username,$password){
        $db = $this->DatabaseConnection();
 
-        $sql = "SELECT id FROM login_credentials WHERE username = '".$username."' and password = '".$password."'";
-        $result = mysqli_query($db,$sql);
-
-
-                
+        $sql = 'SELECT * FROM login_credentials WHERE username = "'.$username.'" AND password = "'.md5($password).'"';
+        $res = $db->query($sql);
         
-
-      $count = mysqli_num_rows($result);
-        
-        // If result matched $myusername and $mypassword, table row must be 1 row
-          
-        if($count == 1) {
+        if($res->num_rows>0){
+           while($record = $res->fetch_assoc()){
+            $username = $record['username'];
+           }
+           $_SESSION['username'] = $username;
+           header('Location: ./dashboard/dashboard.php');
+        }  
+        else{
+           echo 'False';
+        }
+      //   if($count == 1) {
                      
-           echo "welcome to mobile legends";
+      //      echo "welcome to mobile legends";
 
-        }else {
-           echo "error";
-        } 
+      //   }else {
+      //      echo "error";
+      //   } 
 
     }
 }

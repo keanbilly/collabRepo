@@ -22,9 +22,9 @@ $db = new LogIn;
 <label for="password">Password:</label>
 <input type="password" name="password" class="form-control" required>
 <br>
-<input type="submit" value="Log In" name="submit" class="form-control btn btn-primary">
+<input type="submit" value="Log In" name="submit" class="form-control btn">
 
-<a href="./registration.php">sign up</a>
+<a href="./registration.php">Sign up</a>
 
 </form>
 
